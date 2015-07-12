@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5 Custom elements: document-register-element</title>
+		<script src="document-register-element.js"></script> 
+		<link rel="stylesheet" href="../_common/mystyle.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		
+		<script type="text/javascript">
+			document.registerElement(
+			  'my-infobox',
+			  {
+				prototype: Object.create(
+				  HTMLElement.prototype, {
+				  createdCallback: {value: function() {
+						var name = this.getAttribute('name') != null ? this.getAttribute('name') : 'Rating';
+						var stars = this.getAttribute('stars') != null ? this.getAttribute('stars') : 0;
+						this.innerHTML = "<span class='my-infobox my-rating" + stars + "'>" + name + "<i class='fa fa-lg'></i></span>";
+					}
+				  }
+			})
+			});
+		</script>
+	</head>
+	
+	<body>
+		<my-infobox stars="2"></my-infobox>
+	</body>
+</html>

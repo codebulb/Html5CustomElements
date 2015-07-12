@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5 Custom elements: x-tag</title>
+		<script src="x-tag-core.min.js"></script> 
+		<link rel="stylesheet" href="../_common/mystyle.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		
+		<script type="text/javascript">
+			xtag.register('my-infobox', {
+				lifecycle: {
+					created: function() {
+						var name = this.getAttribute('name') != null ? this.getAttribute('name') : 'Rating';
+						var stars = this.getAttribute('stars') != null ? this.getAttribute('stars') : 0;
+						this.innerHTML = "<span class='my-infobox my-rating" + stars + "'>" + name + "<i class='fa fa-lg'></i></span>";
+					}
+				  }
+			});
+		</script>
+	</head>
+	
+	<body>
+		<my-infobox stars="2"></my-infobox>
+	</body>
+</html>

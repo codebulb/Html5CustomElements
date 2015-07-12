@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5 Custom elements: Polymer</title>
+		<script src="webcomponents.min.js"></script>
+		<script src="polymer.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		
+		<polymer-element name="my-infobox" attributes="name stars">
+			<template>
+				<!-- because polymer gets stylesheets with XMLHttpRequest, we cannot place it in a parent directory.
+				That would fail with CORS error on local file:// system. -->
+				<link rel="stylesheet" href="mystyle.css">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+				<span class="my-infobox my-rating{{stars}}">{{name}}<i class="fa fa-lg"></i></span>
+			</template>
+			<script>
+				Polymer({
+					name: "Rating",
+					stars: 0
+				});
+			</script>
+		</polymer-element>
+	</head>
+	
+	<body>
+		<my-infobox stars="2"></my-infobox>
+	</body>
+</html>
